@@ -30,6 +30,15 @@
  *   all of the permissions necessary for your intended use. 
  *   For example, other rights such as publicity, privacy, 
  *   or moral rights may limit how you use the material.
+
+
+CREATE USER 'novo_usuário'@'localhost' IDENTIFIED BY 'senha';
+
+GRANT ALL PRIVILEGES ON * . * TO 'novo_usuario'@'localhost';
+
+FLUSH PRIVILEGES;
+
+mysql --host=franca(nome do banco de dados) --user=giordani --password     =giordani
  */
 package io.github.guisso.taskmanagement.repository;
 
