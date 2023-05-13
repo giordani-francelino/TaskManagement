@@ -140,7 +140,7 @@ public class TaskDao extends Dao<Task> {
             task.setProgress(resultSet.getByte("progresso"));
             task.setConclusion(
                     resultSet.getObject("conclusao", LocalDate.class));
-            task.setExcluded(resultSet.getBoolean("excluido"));
+//            task.setExcluded(resultSet.getBoolean("excluido"));
         } catch (SQLException ex) {
             Logger.getLogger(TaskDao.class.getName()).log(Level.SEVERE, null, ex);
         }

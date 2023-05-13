@@ -70,7 +70,7 @@ public class TaskManagement {
         System.out.println("> " + limparCasaAux);
         
         // Atualizar registro já salvo
-        limparCasaAux.setDescription(limparCasaAux.getDescription() + "!!!");
+        limparCasaAux.setDescription(limparCasa.getDescription() + "!!!");
         new TaskDao().saveOrUpdate(limparCasaAux);
 
         // Recuperar todos os objetos
