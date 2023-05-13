@@ -63,6 +63,10 @@ import java.util.logging.Logger;
 public class TaskDao extends Dao<Task> {
 
     public static final String TABLE = "tarefa";
+    public static final int DESCRICAO = 1;
+    public static final int PROGRESSO = 2;
+    public static final int CONCLUSAO = 3;
+    public static final int ID = 4;
 
     @Override
     public String getSaveStatment() {
@@ -77,20 +81,20 @@ public class TaskDao extends Dao<Task> {
     @Override
     public void composeSaveOrUpdateStatement(PreparedStatement pstmt, Task e) {
         try {
-            pstmt.setString(1, e.getDescription());
+            pstmt.setString(DESCRICAO, e.getDescription());
             // OR
             // pstmt.setObject(1, e.getDescription(), java.sql.Types.VARCHAR);
 
             // Null values
             // NOT! pstmt.setByte(2, e.getProgress());
-            pstmt.setObject(2, e.getProgress(), java.sql.Types.TINYINT);
+            pstmt.setObject( PROGRESSO, e.getProgress(), java.sql.Types.TINYINT);
 
             // LocalDate
-            pstmt.setObject(3, e.getConclusion(), java.sql.Types.DATE);
+            pstmt.setObject(CONCLUSAO, e.getConclusion(), java.sql.Types.DATE);
 
             // Just for the update
             if (e.getId() != null) {
-                pstmt.setLong(4, e.getId());
+                pstmt.setLong(ID, e.getId());
             }
 
         } catch (SQLException ex) {
