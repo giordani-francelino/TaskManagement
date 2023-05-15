@@ -11,6 +11,7 @@ mysql --host=franca(nome do banco de dados) --user=giordani --password     =gior
  */
 package io.github.guisso.taskmanagement.repository;
 
+import io.github.guisso.taskmanagement.task.TaskDao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -80,9 +81,7 @@ public class DbConnection {
         if (connection == null) {
             // ... try ...
             try {
-                System.out.println(">> New database connection");
                 connection = DriverManager.getConnection(URLMYSQL, USER, PASSWORD);
-                System.out.println(">> New database connection");
                 PreparedStatement preparedStatement = connection.prepareStatement("CREATE DATABASE"
                         + " IF NOT EXISTS " + Dao.DB + ";");
                 preparedStatement.execute();
@@ -90,6 +89,17 @@ public class DbConnection {
                 //     from the provided URL, username and password
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
                 System.out.println(">> New database connection");
+                preparedStatement = connection.prepareStatement("CREATE TABLE "
+                        + " IF NOT EXISTS " + TaskDao.TABLE
+                        + "(id bigint AUTO_INCREMENT, descricao varchar(100)"
+                        + ", progresso TINYINT, conclusao DATE, excluido BOOLEAN DEFAULT 0, PRIMARY KEY (ID))");
+                preparedStatement.execute();
+                System.out.println(">> New database connection");
+//codigo int(4) AUTO_INCREMENT,
+//nome varchar(30) NOT NULL,
+//email varchar(50),
+//PRIMARY KEY (codigo)
+//);                
 
             } catch (SQLException ex) {
                 // TODO Rever procedimento e encerrar o programa em caso de falha

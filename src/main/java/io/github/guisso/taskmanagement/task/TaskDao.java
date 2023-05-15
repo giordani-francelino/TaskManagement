@@ -70,7 +70,7 @@ public class TaskDao extends Dao<Task> {
 
     @Override
     public String getSaveStatment() {
-        return "insert into " + TABLE + "(descricao, progresso, conclusao)  values (?, ?, ?)";
+            return "insert into " + TABLE + "(descricao, progresso, conclusao)  values (?, ?, ?)";
     }
 
     @Override
@@ -112,7 +112,7 @@ public class TaskDao extends Dao<Task> {
     public String getFindAllStatment() {
         return "select id, descricao, progresso, conclusao, excluido"
                 + " from tarefa"
-                + " where exlcuido = false";
+                + " where excluido = false";
     }
 
     @Override
